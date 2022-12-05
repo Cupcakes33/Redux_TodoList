@@ -46,6 +46,7 @@ let StyledButton = styled.button`
   background: #f6f6f6;
   border: 1px solid #eac7cc;
   padding: 10px 20px;
+  margin-top: 50px;
   border-radius: 15px;
   cursor: pointer;
   transition: all 0.5s;

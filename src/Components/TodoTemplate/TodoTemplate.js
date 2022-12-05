@@ -2,11 +2,12 @@ import { useState } from "react";
 import styled from "styled-components";
 import TodoPanel from "./TodoPanel";
 
-const TodoTemplate = () => {
+const TodoTemplate = ({ children }) => {
   return (
     <>
       <StyledTemplate>
         <TodoPanel />
+        {children}
       </StyledTemplate>
     </>
   );
