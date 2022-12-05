@@ -1,0 +1,25 @@
+import { useState } from "react";
+import styled from "styled-components";
+import TodoPanel from "./TodoPanel";
+
+const TodoTemplate = () => {
+  return (
+    <>
+      <StyledTemplate>
+        <TodoPanel />
+      </StyledTemplate>
+    </>
+  );
+};
+
+export default TodoTemplate;
+
+let StyledTemplate = styled.div`
+  width: 800px;
+  height: 70vh;
+  background: white;
+  border-radius: 15px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  position: relative;
+`;
