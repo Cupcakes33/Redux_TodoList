@@ -6,7 +6,6 @@ const TodoItems = ({ id, done, text, importent }) => {
   return (
     <TodoItem>
       <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
-
       <TodoTitle done={done}>{text}</TodoTitle>
       <ImportentStar importent={importent}>
         {importent ? <HiStar /> : null}
@@ -45,7 +44,12 @@ const ImportentStar = styled.div`
   justify-content: center;
   color: #e9c46a;
   font-size: 24px;
+  cursor: pointer;
   display: initial;
+  transition: 0.2s;
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 const CheckCircle = styled.div`
   width: 30px;
@@ -66,7 +70,7 @@ const CheckCircle = styled.div`
     `}
 `;
 
-const TodoTitle = styled.div`
+const TodoTitle = styled.span`
   flex: 1;
   font-size: 20px;
   color: #495057;

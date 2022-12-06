@@ -1,4 +1,3 @@
-import { useState } from "react";
 import styled from "styled-components";
 import TodoPanel from "./TodoPanel";
 
@@ -18,6 +17,7 @@ export default TodoTemplate;
 let StyledTemplate = styled.div`
   width: 800px;
   height: 70vh;
+  display: flex;
   background: white;
   border-radius: 15px;
   box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.1);
