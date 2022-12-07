@@ -3,8 +3,7 @@ import styled from "styled-components";
 
 const TodoPanel = () => {
   const [createTodoSwitch, setCreateTodoSwitch] = useState({
-    // tranX: "100%",
-    tranX: "0",
+    tranX: "100%",
     buttonText: "Post",
   });
   const todoSwitchHandler = () => {

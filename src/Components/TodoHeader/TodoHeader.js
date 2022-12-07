@@ -1,6 +1,8 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 
 const TodoHeader = () => {
+  const tasks = useSelector((state) => state).length;
   const today = new Date();
   const dateStringify = today.toLocaleDateString("ko", {
     year: "numeric",
@@ -18,7 +20,7 @@ const TodoHeader = () => {
         <p>{dayStringify}</p>
       </div>
       <div style={{ display: "flex", gap: "20px" }}>
-        <span>Remaining Tasks is 5</span>
+        <span>Remaining Tasks is {tasks}</span>
       </div>
     </StyledHeader>
   );

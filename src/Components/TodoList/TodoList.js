@@ -1,17 +1,33 @@
+import { useSelector } from "react-redux";
 import styled from "styled-components";
 import TodoItems from "./TodoItems";
 
 const TodoList = () => {
+  const todos = useSelector((state) => state);
+
   return (
     <StyledSection>
-      <TodoItems text="1st commit" done={true} importent={true} />
-      <TodoItems text="2nd commit" done={false} importent={false} />
-      <TodoItems text="2nd commit" done={false} />
+      {todos.length === 0 ? (
+        <NoData>아직 해야 할 일이 없어요 !</NoData>
+      ) : (
+        todos.map((todo) => {
+          const { id, title, contents, done, isImportent } = todo;
+          return (
+            <TodoItems
+              key={id}
+              id={id}
+              contents={contents}
+              title={title}
+              done={done}
+              importent={isImportent}
+            />
+          );
+        })
+      )}
     </StyledSection>
   );
 };
 
-export default TodoList;
 let StyledSection = styled.section`
   width: 400px;
   height: 80%;
@@ -23,3 +39,11 @@ let StyledSection = styled.section`
     display: none;
   }
 `;
+
+let NoData = styled.div`
+  width: 100%;
+  height: 100%;
+  color: #9a90a2;
+  padding: 20px 0px;
+`;
+export default TodoList;

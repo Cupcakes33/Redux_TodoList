@@ -1,17 +1,44 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
 import { HiStar } from "react-icons/hi";
+import { addTodo } from "../../Modules/store";
+import { useDispatch } from "react-redux";
 
 const TodoForm = () => {
-  const [isImportent, setIsImportent] = useState(true);
+  const dispatch = useDispatch();
+
+  const [todo, setTodo] = useState({
+    title: "",
+    contents: "",
+    isImportent: false,
+  });
   const checkboxHandler = () => {
-    setIsImportent(!isImportent);
+    setTodo((prev) => {
+      return { ...prev, isImportent: !prev.isImportent };
+    });
   };
+  const todoFormInputHandler = (event) => {
+    const { name, value } = event.target;
+    setTodo((prev) => {
+      return { ...prev, [name]: value };
+    });
+  };
+
+  const todoFormSubmitHandler = (event) => {
+    event.preventDefault();
+    dispatch(addTodo(todo));
+    setTodo({
+      title: "",
+      contents: "",
+      isImportent: false,
+    });
+  };
+
   return (
-    <StyledForm>
+    <StyledForm onSubmit={todoFormSubmitHandler}>
       <StyledTitleWrapper>
         <h1>Todo Title</h1>
-        <StarLabel htmlFor="importentCheck" isImportent={isImportent}>
+        <StarLabel htmlFor="importentCheck" isImportent={todo.isImportent}>
           <StarCheckbox
             type="checkbox"
             id="importentCheck"
@@ -21,9 +48,19 @@ const TodoForm = () => {
         </StarLabel>
       </StyledTitleWrapper>
 
-      <StyledInput type="text" maxLength={20} />
+      <StyledInput
+        name="title"
+        type="text"
+        maxLength={20}
+        value={todo?.title}
+        onChange={todoFormInputHandler}
+      />
       <h1>Todo Contents</h1>
-      <StyledTextarea />
+      <StyledTextarea
+        name="contents"
+        value={todo?.contents}
+        onChange={todoFormInputHandler}
+      />
       <StyledSubmitButton type="submit">Submit !</StyledSubmitButton>
     </StyledForm>
   );
@@ -96,7 +133,7 @@ let StarCheckbox = styled.input`
 `;
 let StarLabel = styled.label`
   font-size: 30px;
-  color: #e9c46a;
+  color: #eac7cc;
   cursor: pointer;
   transition: 0.3s ease-in-out;
   &:hover {
@@ -105,6 +142,6 @@ let StarLabel = styled.label`
   ${(props) =>
     props.isImportent &&
     css`
-      color: #eac7cc;
+      color: #e9c46a;
     `}
 `;

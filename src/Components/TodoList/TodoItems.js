@@ -1,16 +1,33 @@
 import styled, { css } from "styled-components";
 import { MdDone, MdDelete } from "react-icons/md";
 import { HiStar } from "react-icons/hi";
+import { doneTodo, deleteTodo, importentTodo } from "../../Modules/store";
+import { useDispatch, useSelector } from "react-redux";
 
-const TodoItems = ({ id, done, text, importent }) => {
+const TodoItems = ({ id, done, title, importent }) => {
+  const todos = useSelector((state) => state);
+  const dispatch = useDispatch();
+
+  const doneSwitchHandler = () => {
+    dispatch(doneTodo(id));
+  };
+  const deleteSwitchHandler = () => {
+    dispatch(deleteTodo(id));
+  };
+  const importentSwitchHandler = () => {
+    dispatch(importentTodo(id));
+  };
+
   return (
     <TodoItem>
-      <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
-      <TodoTitle done={done}>{text}</TodoTitle>
-      <ImportentStar importent={importent}>
+      <CheckCircle done={done} onClick={doneSwitchHandler}>
+        {done && <MdDone />}
+      </CheckCircle>
+      <TodoTitle done={done}>{title}</TodoTitle>
+      <ImportentStar onClick={importentSwitchHandler}>
         {importent ? <HiStar /> : null}
       </ImportentStar>
-      <TodoDeleteButton>
+      <TodoDeleteButton onClick={deleteSwitchHandler}>
         <MdDelete />
       </TodoDeleteButton>
     </TodoItem>
