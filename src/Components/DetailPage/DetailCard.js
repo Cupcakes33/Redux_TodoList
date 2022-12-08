@@ -1,10 +1,19 @@
 import styled from "styled-components";
 import { HiStar } from "react-icons/hi";
+import { useNavigate } from "react-router-dom";
 
 const DetailCard = ({ id, title, contents, isImportent, done }) => {
+  const navigate = useNavigate();
   return (
     <StyledTemplate>
-      <StyledIdBox>{id}</StyledIdBox>
+      <StyledIdBox>
+        {id}
+        <StyledBackButton
+          onClick={() => {
+            navigate("/");
+          }}
+        />
+      </StyledIdBox>
       <StyledTitleBox>
         {title}
         <ImportentStar>{isImportent ? <HiStar /> : null}</ImportentStar>
@@ -27,13 +36,28 @@ let StyledTemplate = styled.div`
   overflow: hidden;
   position: relative;
 `;
+let StyledBackButton = styled.button`
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  border: none;
+  background: #ff7b89;
+  cursor: pointer;
+  transition: 0.3s all;
+  &:hover {
+    transform: scale(0.9);
+  }
+`;
 
 let StyledIdBox = styled.div`
   width: 100%;
   height: 20px;
   background: #cbc0de;
   color: #9a90a2;
-  padding-left: 15px;
+  padding: 5px 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 let StyledTitleBox = styled.div`
@@ -55,8 +79,6 @@ const ImportentStar = styled.div`
   justify-content: center;
   color: #e9c46a;
   font-size: 3rem;
-  cursor: pointer;
-  transition: 0.2s;
 `;
 const StyledContentsBox = styled.div`
   width: 100%;
