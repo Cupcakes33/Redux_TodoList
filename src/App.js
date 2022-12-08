@@ -1,36 +1,16 @@
 import "./App.css";
-import { createGlobalStyle } from "styled-components";
-import TodoTemplate from "./Components/TodoTemplate/TodoTemplate";
-import TodoHeader from "./Components/TodoHeader/TodoHeader";
-import TodoList from "./Components/TodoList/TodoList";
-import TodoCreate from "./Components/TodoCreate/TodoCreate";
+import { Routes, Route } from "react-router-dom";
+import Main from "./Routes/Main";
+import Error from "./Routes/Error";
+import Detail from "./Routes/Detail";
 
-const GlobalStyle = createGlobalStyle`
-  *{
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-  }
-  body {
-    background: #8e9aaf;
-    min-height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-`;
 function App() {
   return (
-    <>
-      <GlobalStyle />
-      <TodoTemplate>
-        <div>
-          <TodoHeader />
-          <TodoList />
-        </div>
-        <TodoCreate />
-      </TodoTemplate>
-    </>
+    <Routes>
+      <Route path="/" element={<Main />} />
+      <Route path="/detail/:id" element={<Detail />} />
+      <Route path="*" element={<Error />} />
+    </Routes>
   );
 }
 

@@ -3,6 +3,7 @@ import { MdDone, MdDelete } from "react-icons/md";
 import { HiStar } from "react-icons/hi";
 import { doneTodo, deleteTodo, importentTodo } from "../../Modules/store";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const TodoItems = ({ id, done, title, importent }) => {
   const todos = useSelector((state) => state);
@@ -18,12 +19,19 @@ const TodoItems = ({ id, done, title, importent }) => {
     dispatch(importentTodo(id));
   };
 
+  let navigate = useNavigate();
+  const goDetailPage = () => {
+    navigate(`/detail/${id}`);
+  };
+
   return (
     <TodoItem>
       <CheckCircle done={done} onClick={doneSwitchHandler}>
         {done && <MdDone />}
       </CheckCircle>
-      <TodoTitle done={done}>{title}</TodoTitle>
+      <TodoTitle done={done} onClick={goDetailPage}>
+        {title}
+      </TodoTitle>
       <ImportentStar onClick={importentSwitchHandler}>
         {importent ? <HiStar /> : null}
       </ImportentStar>

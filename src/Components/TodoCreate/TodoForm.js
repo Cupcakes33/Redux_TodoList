@@ -106,6 +106,9 @@ let StyledTextarea = styled.textarea`
   height: 70%;
   margin-bottom: 20px;
   resize: none;
+  word-wrap: break-word;
+  word-break: break-word;
+  white-space: pre-wrap;
 `;
 
 let StyledSubmitButton = styled.button`
