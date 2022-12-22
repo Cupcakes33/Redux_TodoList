@@ -7,7 +7,12 @@
 - 가끔은 동심으로 돌아가고 싶을 때가 있어요.. 😢
 - 어릴때 쓰던 그림일기를 써봐요 🥰
 
+## 📔 공동작업 노션
+
+<a href="https://www.notion.so/5-SA-27f1b60717ef4f0fa39193de00ce3374" target="_blank"> 5조 미니프로젝트 SA 링크 </a><br>
+
 ## 📔 Members
+
 1. 우주호(FE)
 2. 정창원(FE)
 3. 이승재(FE)
@@ -49,4 +54,46 @@
 <img src="https://img.shields.io/badge/ZEP-6476df?style=for-the-badge&logoColor=white"/>
 </div>
 
-## 📔 Trouble Shooting
+## 📔 Trouble Shooting(FE)
+
+<details>
+<summary> 1. 회원가입, 로그인 </summary>
+<div markdown="1">	
+<br>
+</div>
+</details>
+<details>
+<summary> 2. 캔버스 </summary>
+<div markdown="1">	
+<br>
+</div>
+</details>
+<details>
+<summary> 3. 토큰 </summary>
+<div markdown="1">	
+<br>
+</div>
+</details>
+<details>
+<summary> 4. 날씨 API </summary>
+<div markdown="1">	
+<br>
+</div>
+</details>
+<details>
+<summary> 5. 이미지 전달 : Blob, longBlob, form, formData </summary>
+<div markdown="1">	
+<br>
+</div>
+</details>
+<details>
+<summary> 6. 프로필 수정 : blob으로 실행되는 로직이 무조건적으로 실행 되지 않게 수정. </summary>
+<div markdown="1">	
+<br>
+</div>
+</details>
+
+## 📔 Trouble Shooting(ALL)
+
+1. 스코프 변경
+2. CORS
