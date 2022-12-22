@@ -81,7 +81,7 @@
 1. 어떻게 인증을 유효하게 유지할 수 있을지, 인증이 되지 않았을 때 어떠한 방식으로 대응할 것인지를 생각
 2. BE 에서 Bearer 토큰을 사용한 인증 방식을 채택하였고 프론트에서는 인증할 때 마다 토큰을 보내주어야 했음.
 
-```
+```jsx
 const getToken = () => {
   const token = localStorage.getItem("token");
   return token ? `Bearer ${token}` : null;
@@ -132,7 +132,7 @@ instance.interceptors.response.use(
 3. 해당 유저의 프로필을 thunk 로 받아와서 썸네일에 업로드 하는 로직.<br>
 4. 문제는 썸네일로 받아온 서버에 저장된 url을 blob 으로 변환하는 로직 때문.<br>
 
-```
+```jsx
   const selfIntroUpdateSwitchHandler = () => {
     const blob = dataURItoBlob(profileImgStore);
 
