@@ -59,6 +59,35 @@
 <details>
 <summary> 1. 회원가입, 로그인 </summary>
 
+JWT인증방식에서 토큰은 어디에 저장할지,<br>
+→ 쿠키와 로컬스토리지 중 고민하다가 로컬스토리지 저장하기로 결정<br>
+(미들웨어에서 로그인 포스트하면 서버에서 오는 응답헤더에 담긴 토큰을 저장하는방식)<br>
+로그인/회원가입 페이지에서 컨텐츠를 제공하는 메인페이지로 넘어가는 과정에서<br>
+1차적으로 어떻게 유효성 검증을 해줄건지에 대한 고민이 있었다.<br>
+사이트의 서비스 자체가 개인의 일기장공간이기때문에<br>
+인가가 되어있지 않을경우(토큰이 없을 경우) 애초에 메인페이지로 보내줄 필요가 없었음<br>
+따라서<br>
+→ 로그인/회원가입 페이지를 제외한<br>
+메인페이지와 예하 페이지들에 대해 priv ate routes 설정을 해줌<br>
+로컬에 저장된 토큰을 localStorage.getItem(”token”)으로 가져와서<br>
+토큰이 있을 경우 메인페이지와 그 외 다이어리 조회, 생성, 수정 페이지에 접근할 수 있게,<br>
+토큰이 없을 경우 강제로 로그인/회원가입 페이지로 navigate되도록 설정해주었다.<br>
+```jsx
+const PrivateRoutes = () => {
+  const token = localStorage.getItem("token");
+
+  return token ? <Outlet /> : <Navigate to="/" />;
+};
+<Route element={<PrivateRoutes />}>
+        <Route path="/mainpage" element={<Main />} />
+        <Route path="/postpage" element={<Postpage />} />
+        <Route path="/detailpage/:postId" element={<Postpage />} />
+      </Route>
+```
+
+아쉬운 점<br>
+Refresh Token을 사용하지 못하고 Access Token만 사용한점<br>
+
 <div markdown="1">	
 <br>
 </div>
